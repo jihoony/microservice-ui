@@ -25,7 +25,7 @@ function updateStats(userId){
             $('#stats-score').empty().append(0);
             $('#stats-badges').empty();
         }
-    })
+    });
 }
 
 
@@ -35,4 +35,4 @@ $(document).ready(function(){
     $("#refresh-leaderboard").click(function(event){
        updateLeaderBoard(); 
     });
-})
+});
