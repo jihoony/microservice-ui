@@ -22,14 +22,12 @@ function updateResults(alias){
             $('#results-body').empty();
             data.forEach(function(row){
                 $('#results-body').append('<tr><td>' + row.id + '</td>' +
-                                          '<td>' + row.multiplication.factorA + ' x ' +
-                                          row.multiplication.factorB + '</td>' +
+                                          '<td>' + row.multiplication.factorA + ' x ' + row.multiplication.factorB + '</td>' +
                                           '<td>' + row.resultAttempt + '</td>' +
-                                          '<td>' + (row.correct === true ? 'YES' : 'NO') + '</td></tr>'
-                                         );
-            })
+                                          '<td>' + (row.correct === true ? 'YES' : 'NO') + '</td></tr>');
+            });
             
-            userId = data[0].user_id;
+            userId = data[0].user.id;
         }
     });
     
