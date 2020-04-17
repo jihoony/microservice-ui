@@ -1,6 +1,8 @@
+var SERVER_URL = "http://localhost:8000/api";
+
 function updateMultiplication() {
     $.ajax({
-        url: "http://localhost:8080/multiplications/random"
+        url: SERVER_URL + "/multiplications/random"
     }).then(function (data) {
         // 폼 비우기
         $("#attempt-form").find("input[name='result-attempt']").val("");
@@ -15,8 +17,9 @@ function updateResults(alias){
     var userId = -1;
     
     $.ajax({
+
+        url: SERVER_URL + "/results?alias=" + alias,
         async: false,
-        url: "http://localhost:8080/results?alias=" + alias,
         success: function (data){
             $('#results-div').show();
             $('#results-body').empty();
@@ -33,20 +36,6 @@ function updateResults(alias){
     
     return userId;
 }
-
-//function updateStats(alias) {
-//    $.ajax({
-//        url: "http://localhost:8080/results?alias=" + alias,
-//    }).then(function (data) {
-//        $('#stats-body').empty();
-//        data.forEach(function (row) {
-//            $('#stats-body').append('<tr><td>' + row.id + '</td>' +
-//                '<td>' + row.multiplication.factorA + ' x ' + row.multiplication.factorB + '</td>' +
-//                '<td>' + row.resultAttempt + '</td>' +
-//                '<td>' + (row.correct === true ? 'YES' : 'NO') + '</td></tr>');
-//        });
-//    });
-//}
 
 $(document).ready(function () {
 
@@ -78,7 +67,7 @@ $(document).ready(function () {
 
         // POST를 이용해서 데이터 보내기
         $.ajax({
-            url: 'http://localhost:8080/results',
+            url: SERVER_URL + '/results',
             type: 'POST',
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
